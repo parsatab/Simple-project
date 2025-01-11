@@ -8,12 +8,15 @@ while True:
     print("2. Watch your list.")
     print("3. Update(edit) your list.")
     print("4. Delete from list with index number.")
-    print("5. Exit the program.")
+    print("5. Sort your list.")
+    print("6. Remove duplicate list members.")
+    print("7. Clear all list elements")
+    print("8. Exit the program.")
 
     print(Fore.CYAN)
     option = int(input("Enter your desired option : "))
 
-    if option == 5:
+    if option == 8:
         print(Fore.WHITE)
         exit_or_not = input("Do you want to exit the program?? (yes/no)")
 
@@ -95,3 +98,62 @@ while True:
             else:
                 print(Fore.RED)
                 print("We don't have index zero from list!")
+
+    elif option == 5:
+        print(Fore.YELLOW + "A. Sort the list in ascending order.")
+        print("B. Sort the list in descending order." + Fore.CYAN)
+        sorting = input("Enter your desired option: ")
+
+        if sorting == 'A':
+            string_sorting = [x for x in userList if isinstance(x, str)]
+            integer_sorting = [x for x in userList if isinstance(x, int)]
+            string_sorted = sorted(string_sorting)
+            integer_sorted = sorted(integer_sorting)
+            if string_sorted and integer_sorted:
+                userList = string_sorted + integer_sorted
+                print(Fore.BLUE)
+                print(userList)
+            else:
+                if len(integer_sorted) == 0:
+                    userList = string_sorted
+                    print(Fore.BLUE)
+                    print(userList)
+                else:
+                    userList = integer_sorted
+                    print(Fore.BLUE)
+                    print(userList)
+        elif sorting == 'B':
+            string_sorting = [x for x in userList if isinstance(x, str)]
+            integer_sorting = [x for x in userList if isinstance(x, int)]
+            string_sorted = sorted(string_sorting, reverse=True)
+            integer_sorted = sorted(integer_sorting, reverse=True)
+            if string_sorted and integer_sorted:
+                userList = string_sorted + integer_sorted
+                print(Fore.BLUE)
+                print(userList)
+            else:
+                if len(integer_sorted) == 0:
+                    userList = string_sorted
+                    print(Fore.BLUE)
+                    print(userList)
+                else:
+                    userList = integer_sorted
+                    print(Fore.BLUE)
+                    print(userList)
+        else:
+            print(Fore.RED)
+            print("You must choice between option A or B.")
+            print("You return to the main options.")
+
+    elif option == 6:
+        userList = list(set(userList))
+        print(Fore.BLUE)
+        print(userList)
+
+    elif option == 7:
+        userList.clear()
+        print(f'{Fore.BLUE} {userList}')
+
+    else:
+        print(Fore.RED)
+        print("Your option is invalid")
